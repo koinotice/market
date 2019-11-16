@@ -1,0 +1,28 @@
+{
+    "LOG": {
+        "console": true,
+        "level": "DEBUG",
+        "path": "/data/logs/servers/Market",
+        "name": "market.log",
+        "clear": true,
+        "backup_count": 5
+    },
+    "RABBITMQ": {
+        "host": "note.pmker.com",
+        "port": 5672,
+        "username": "guest",
+        "password": "guest"
+    },
+
+    "MARKETS": {
+        "binance": {
+            "symbols": [
+                "BTC/USDT",
+                "LTC/USDT"
+            ],
+            "channels": [
+                "kline", "orderbook", "trade"
+            ]
+        }
+    }
+}

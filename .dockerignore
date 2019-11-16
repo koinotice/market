@@ -1,0 +1,16 @@
+.git
+.gitignore
+Dockerfile
+.dockerignore
+config.json*
+*.sqlite
+.coveragerc
+.eggs
+.github
+.pylintrc
+.travis.yml
+CONTRIBUTING.md
+MANIFEST.in
+README.md
+.vscode
+.idea

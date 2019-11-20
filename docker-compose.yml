@@ -9,4 +9,13 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/app
+      - ./config.json:/app/config.json
 
+  rabbitmq:
+    hostname: rabbitmq
+    image: rabbitmq:3-management
+    environment:
+      - RABBITMQ_NODENAME=my-rabbit
+    ports:
+      - 15672
+      - 5672

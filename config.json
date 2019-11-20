@@ -13,23 +13,16 @@
         "username": "guest",
         "password": "guest"
     },
-
+ 
     "MARKETS": {
+
         "binance": {
             "symbols": [
                 "BTC/USDT",
                 "LTC/USDT",
-                "ETH/USDT"
-            ],
-            "channels": [
-                "kline", "orderbook", "trade"
-            ]
-        },
-        "gate": {
-            "symbols": [
-                "BTC/USDT",
-                "LTC/USDT",
-                "ETH/USDT"
+                "ETH/USDT",
+                "ETH/BNB",
+                "EOS/USDT"
             ],
             "channels": [
                 "kline", "orderbook", "trade"

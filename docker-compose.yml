@@ -20,12 +20,27 @@ services:
       - 15672
       - 5672
 
-  jupyterlab:
-    image: jupyter/base-notebook
+  jupyter:
+    image: gqbot:jupyter
+    build:
+      context: ./docker/jupyter
+      dockerfile: Dockerfile
     volumes:
-      - /notebooks/:/notebooks
+      - ./data:/data
+      - ./code:/code
     ports:
-      - "8888:8888"
+      - "6000:8888"
     environment:
       - JUPYTER_ENABLE_LAB=1
-    command: start-notebook.sh --NotebookApp.notebook_dir=/notebooks
+  vscode:
+    image: gqbot:vscode
+    build:
+      context: ./docker/vscode
+      dockerfile:  Dockerfile
+    volumes:
+      - ./data:/data
+      - ./code:/code
+    ports:
+      - "6000:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=1

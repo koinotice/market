@@ -25,10 +25,10 @@ services:
     container_name: "${PROJECT_NAME}_jupyter"
     image: koinotice/jupyter
     build:
-      context: ./docker/vscode
+      context: ./docker/jupyter
       dockerfile:  Dockerfile
     volumes:
-      - /koinotice/data/jupyter:/data/jupyter
+      - ./data/jupyter:/data/jupyter
     environment:
       - NOTEBOOK_PASSWORD=${NOTEBOOK_PASSWORD}
       - NOTEBOOK_DIR=/data/jupyter

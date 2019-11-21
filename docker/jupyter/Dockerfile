@@ -1,14 +1,24 @@
-# the base miniconda3 image
-FROM continuumio/miniconda3:latest
+FROM continuumio/anaconda3:latest
 
-# load in the environment.yml file - this file controls what Python packages we install
-ADD environment.yml /
+RUN set -x \
+        && apt-get update -y \
+        && pip install --upgrade pip \
+        && pip install mglearn \
+	    && pip uninstall urllib3 -y \
+		&& pip uninstall  chardet -y && pip install requests \
+		&& conda install jupyter -y --quiet
 
-# install the Python packages we specified into the base environment
-RUN conda update -n base conda -y && conda env update
+EXPOSE 8888
+
+WORKDIR /data/jupyter
+
+COPY ./scripts /data/scripts
+
+RUN chmod +x /data/scripts/*.sh
+
+CMD [ "/data/scripts/entrypoint.sh" ]
 
 
 
-COPY docker-entrypoint.sh /usr/local/bin/
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+#CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--no-browser", "--allow-root"]

@@ -1,6 +1,17 @@
 version: '3'
 
 services:
+
+  v2ray:
+    image: v2ray/official
+    container_name: v2ray
+    restart: always
+    command: v2ray -config=/etc/v2ray/config.json
+    ports:
+      - "8888:8888"
+      #- "127.0.0.1:8889:8889"
+    volumes:
+      - ./data/v2ray:/etc/v2ray
   market:
     container_name: "${PROJECT_NAME}_market"
     image: gqbot:market
